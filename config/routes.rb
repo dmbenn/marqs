@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
+  root 'shallows#home'
+  
   devise_for :users
-   root 'shallows#home'
+   
+  post :incoming, to: 'incoming#create'
   
 end
