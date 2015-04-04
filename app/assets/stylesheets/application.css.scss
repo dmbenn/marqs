@@ -40,3 +40,16 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+#signin h2,
+#signup h2 {
+  text-align: center;
+}
+
+#signin,
+#signup {
+  padding-top: 75px;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
