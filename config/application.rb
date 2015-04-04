@@ -20,7 +20,7 @@ module Marqs
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.web_console.whitelisted_ips = '67.167.245.53'
+    # config.web_console.whitelisted_ips = '67.167.245.53'
 
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
