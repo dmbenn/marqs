@@ -8,14 +8,14 @@ class IncomingController < ApplicationController
     # You put the message-splitting and business
     # magic here. 
     
-    @user = User.where(email: params[:sender])
+    @user = User.where(email: params[:sender]).take
     @url = params["body-plain"]
     
     if @user.nil?
       @user = User.create(email: params[:sender], password: params[:sender])
     end
     
-    @topic = Topic.where(title: params[:subject], user: @user)
+    @topic = Topic.where(title: params[:subject], user: @user).take
     
     if @topic.nil?
       @topic = Topic.create(title: params[:subject], user: @user)
