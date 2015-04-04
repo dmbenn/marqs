@@ -1,0 +1,33 @@
+<h2 class="text-center">My Topics</h2>  
+
+  
+<% @topics.each do |topic| %>
+  <div class="row">
+    <div class="row">
+      <div class="col-md-4">
+        <h2><%= link_to topic.title, topic %></h2>
+      </div>
+    </div>
+    <div class="row">
+      <% topic.bookmarks.each do |mark| %>
+        <div class="col-sm-4">
+           <%= mark.url %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to "Delete Topic", topic, method: :delete, class: 'btn btn-danger delete-topic', data: {confirm: 'Are you sure you want to delte this Topic?'} %>
+<% end %>
+
+
+<div class="row pull-bottom">
+  <%= form_for @topic, :html => {class: 'form-inline', id: 'new-topic'} do |f| %>
+  <div class="form-group">
+    <%= f.label "Add another Topic" %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Save", class: 'btn btn-success btn-large' %>
+  </div> 
+<% end %>
+</div>
