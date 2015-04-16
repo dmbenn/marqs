@@ -1,33 +1,25 @@
+<div class="container">
 <h2 class="text-center">My Topics</h2>  
 
-  
-<% @topics.each do |topic| %>
-  <div class="row">
-    <div class="row">
-      <div class="col-md-4">
-        <h2><%= link_to topic.title, topic %></h2>
-      </div>
-    </div>
-    <div class="row">
-      <% topic.bookmarks.each do |mark| %>
-        <div class="col-sm-4">
-           <%= mark.url %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <%= link_to "Delete Topic", topic, method: :delete, class: 'btn btn-danger delete-topic', data: {confirm: 'Are you sure you want to delte this Topic?'} %>
-<% end %>
-
-
-<div class="row pull-bottom">
-  <%= form_for @topic, :html => {class: 'form-inline', id: 'new-topic'} do |f| %>
+<div class="pull-right">
+<%= form_for @topic, :html => {class: 'form-inline', id: 'new-topic'} do |f| %>
   <div class="form-group">
-    <%= f.label "Add another Topic" %>
-    <%= f.text_field :title, class: 'form-control' %>
+    <%= f.text_field :title, class: 'form-control', placeholder: "Add another Topic"  %>
   </div>
   <div class="form-group">
     <%= f.submit "Save", class: 'btn btn-success btn-large' %>
   </div> 
 <% end %>
 </div>
+</div>
+
+  
+<% @topics.each do |topic| %>
+   <h2><%= link_to topic.title, topic %></h2>
+      <% topic.bookmarks.each do |bookmark| %>
+        <%= render partial: "bookmarks/bookmark", locals: {bookmark: bookmark} %>
+      <% end %>
+  <%= link_to "Delete Topic", topic, method: :delete, class: 'btn btn-danger delete-topic', data: {confirm: 'Are you sure you want to delte this Topic?'} %>
+  <%= link_to "Add Bookmark", new_topic_bookmark_path(topic), class: 'btn btn-info delete-topic' %>
+<% end %>
+
