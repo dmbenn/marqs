@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>My Bookmarks</h2>
+  <% @user_bookmarks.each do |bookmark| %>
+    <%= render partial: "bookmarks/bookmark", locals: {bookmark: bookmark} %>
+    <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+  <% end %>
+</div>
+<% if @liked_bookmarks %>
+  <div class="container">
+    <h2>Liked Bookmarks</h2>
+    <% @liked_bookmarks.each do |bookmark| %>
+      <%= render partial: "bookmarks/bookmark", locals: {bookmark: bookmark} %>
+      <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+    <% end %>
+  </div>
+<% end %>
