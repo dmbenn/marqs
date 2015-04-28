@@ -1,6 +1,7 @@
 <h2><%= link_to @topic.title, @topic %></h2>
   <% @topic.bookmarks.each do |bookmark| %>
     <%= render partial: "bookmarks/bookmark", locals: {bookmark: bookmark} %>
+     <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
   <% end %>
 
   <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger delete-topic', data: {confirm: 'Are you sure you want to delte this Topic?'} %>

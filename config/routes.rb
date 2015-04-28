@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
 
   resources :topics do
-    resources :bookmarks
+    resources :bookmarks, except: [:index] do
+      resources :likes, only: [:create, :destroy]
+    end
   end
 
   root 'shallows#home'
